@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tài Khoản - SONIA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 35%, #f8fafc 100%);
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #062247, #0369a1, #0284c7);
+      padding: 16px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(6, 34, 71, 0.25);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .logo span { color: #7dd3fc; }
+    nav { display: flex; gap: 12px; flex-wrap: wrap; }
+    nav a {
+      color: #e0f2fe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+    nav a:hover, nav a.active {
+      background: #ffffff;
+      color: #062247;
+    }
+
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .blue-card {
+      background: #ffffff;
+      border: 1.5px solid #7dd3fc;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 8px 22px rgba(2, 132, 199, 0.08);
+    }
+    h3 { color: #062247; margin-bottom: 14px; font-size: 20px; }
+    .row { margin-bottom: 12px; }
+    .row label { display: block; font-size: 13px; font-weight: 600; color: #0369a1; margin-bottom: 4px; }
+    input {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #7dd3fc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      background: #f8fafc;
+    }
+    input:focus {
+      outline: none;
+      border-color: #0284c7;
+      background: #ffffff;
+    }
+    .btn-blue {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #ffffff;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .btn-blue:hover { background: #062247; transform: translateY(-2px); }
+    .status-text { margin-top: 14px; font-weight: 700; color: #0284c7; }
+
+    footer {
+      background: linear-gradient(135deg, #041730, #062247);
+      color: #bae6fd;
+      text-align: center;
+      padding: 24px;
+      margin-top: 60px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 780px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      header { padding: 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">SONIA<span>.</span></a>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="products.html">Sản phẩm</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="contact.html">Liên hệ &amp; Góp ý</a>
+      <a href="account.html" class="active">Tài khoản</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="grid-2">
+      <div class="blue-card">
+        <h3>Đăng Ký</h3>
+        <form id="regForm">
+          <div class="row">
+            <label>Tên đăng nhập *</label>
+            <input type="text" id="regUser" required/>
+          </div>
+          <div class="row">
+            <label>Mật khẩu *</label>
+            <input type="password" id="regPass" required/>
+          </div>
+          <button type="submit" class="btn-blue">Đăng Ký</button>
+        </form>
+
+        <hr style="margin:22px 0; border:none; border-top:1px dashed #7dd3fc;"/>
+
+        <h3>Đăng Nhập</h3>
+        <form id="loginForm">
+          <div class="row">
+            <label>Tên đăng nhập *</label>
+            <input type="text" id="loginUser" required/>
+          </div>
+          <div class="row">
+            <label>Mật khẩu *</label>
+            <input type="password" id="loginPass" required/>
+          </div>
+          <button type="submit" class="btn-blue">Đăng Nhập</button>
+        </form>
+      </div>
+
+      <div class="blue-card">
+        <h3>Đổi Mật Khẩu</h3>
+        <form id="changePassForm">
+          <div class="row">
+            <label>Tên đăng nhập *</label>
+            <input type="text" id="cpUser" required/>
+          </div>
+          <div class="row">
+            <label>Mật khẩu cũ *</label>
+            <input type="password" id="oldPass" required/>
+          </div>
+          <div class="row">
+            <label>Mật khẩu mới *</label>
+            <input type="password" id="newPass" required/>
+          </div>
+          <button type="submit" class="btn-blue">Đổi Mật Khẩu</button>
+        </form>
+        <p id="accStatus" class="status-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 SONIA Fashion — Quần áo, Giày dép &amp; Phụ kiện</footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

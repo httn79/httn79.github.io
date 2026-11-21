@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - To-do List jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body { font-family: Arial; margin: 20px; background: aliceblue; color: navy; }
+    .box { max-width: 500px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; border: 1px solid lightblue; }
+    h2 { margin-top: 0; color: dodgerblue; }
+    .add-row { display: flex; gap: 8px; margin-bottom: 12px; }
+    input[type="text"] { flex: 1; padding: 8px; border: 1px solid skyblue; border-radius: 6px; }
+    button { background: dodgerblue; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button:hover { background: royalblue; }
+    .filters { margin-bottom: 12px; }
+    .filters button { background: lightblue; color: navy; }
+    .filters button.active { background: dodgerblue; color: white; }
+    .task { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid aliceblue; }
+    .task-left { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .done { text-decoration: line-through; color: gray; }
+    .edit-btn { background: steelblue; padding: 5px 8px; font-size: 12px; }
+    .del-btn { background: crimson; padding: 5px 8px; font-size: 12px; }
+    .status { margin-top: 12px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>MY TASK</h2>
+
+    <div class="add-row">
+      <input type="text" id="taskInput" placeholder="Nhập công việc">
+      <button type="button" id="addBtn">Add</button>
+    </div>
+
+    <div class="filters">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="active">Active</button>
+      <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+    </div>
+
+    <div id="taskList"></div>
+
+    <div class="status">Completed: <span id="doneCount">0</span>/<span id="totalCount">0</span></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var macDinh = [
+        { text: "Học HTML", done: false },
+        { text: "Học CSS", done: false },
+        { text: "Học jQuery", done: false }
+      ];
+
+      var tasks = JSON.parse(localStorage.getItem("hasoyunTasks")) || macDinh;
+      var boLoc = "all";
+
+      function render() {
+        localStorage.setItem("hasoyunTasks", JSON.stringify(tasks));
+        var html = "";
+        var soXong = 0;
+
+        for (var i = 0; i < tasks.length; i++) {
+          if (tasks[i].done) soXong++;
+
+          if (boLoc === "active" && tasks[i].done) continue;
+          if (boLoc === "completed" && !tasks[i].done) continue;
+
+          html += '<div class="task">' +
+            '<div class="task-left">' +
+              '<input type="checkbox" class="chk" data-i="' + i + '" ' + (tasks[i].done ? "checked" : "") + '>' +
+              '<span class="' + (tasks[i].done ? "done" : "") + '">' + tasks[i].text + '</span>' +
+            '</div>' +
+            '<div>' +
+              '<button type="button" class="edit-btn" data-i="' + i + '">Sửa</button> ' +
+              '<button type="button" class="del-btn" data-i="' + i + '">Xóa</button>' +
+            '</div>' +
+          '</div>';
+        }
+
+        $("#taskList").html(html || "<p>Không có công việc nào.</p>");
+        $("#doneCount").text(soXong);
+        $("#totalCount").text(tasks.length);
+      }
+
+      // Thêm task
+      $("#addBtn").click(function () {
+        var nd = $.trim($("#taskInput").val());
+        if (nd === "") return;
+        tasks.push({ text: nd, done: false });
+        $("#taskInput").val("");
+        render();
+      });
+
+      // Đánh dấu completed
+      $("#taskList").on("change", ".chk", function () {
+        var i = $(this).attr("data-i");
+        tasks[i].done = $(this).is(":checked");
+        render();
+      });
+
+      // Sửa task
+      $("#taskList").on("click", ".edit-btn", function () {
+        var i = $(this).attr("data-i");
+        var moi = prompt("Sửa công việc:", tasks[i].text);
+        if (moi !== null && $.trim(moi) !== "") {
+          tasks[i].text = $.trim(moi);
+          render();
+        }
+      });
+
+      // Xóa task
+      $("#taskList").on("click", ".del-btn", function () {
+        var i = $(this).attr("data-i");
+        tasks.splice(i, 1);
+        render();
+      });
+
+      // Lọc All / Active / Completed
+      $(".filter-btn").click(function () {
+        boLoc = $(this).attr("data-filter");
+        $(".filter-btn").removeClass("active");
+        $(this).addClass("active");
+        render();
+      });
+
+      render();
+    });
+  </script>
+
+</body>
+</html>

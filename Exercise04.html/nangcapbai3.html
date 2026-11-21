@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Mỹ Phẩm Xanh Dịu Nhẹ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 3px 10px lightblue;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: dodgerblue;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: navy;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: dodgerblue;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 40px 30px;
+      background-color: lightblue;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: dodgerblue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px steelblue;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: royalblue;
+    }
+
+    .hero-img {
+      position: relative;
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 380px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px steelblue;
+    }
+
+    .tag {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: dodgerblue;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    
+    .section {
+      padding: 40px 30px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 28px;
+      color: royalblue;
+      margin-top: 0;
+    }
+
+   
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px lightblue;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px lightblue;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: dodgerblue;
+      margin: 10px 0;
+    }
+
+  
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px lightblue;
+      transition: 0.3s;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+    }
+
+   
+    .contact-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border: 1px solid skyblue;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    
+    .bottom-banner {
+      max-width: 1000px;
+      margin: 25px auto 0;
+      padding: 0 30px;
+    }
+
+    .bottom-banner img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px steelblue;
+      display: block;
+    }
+
+    footer {
+      background-color: dodgerblue;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 30px;
+    }
+
+   
+    @media screen and (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+   
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .features-grid,
+      .product-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header>
+    <a href="#" class="logo">HASOYUN</a>
+    <nav>
+      <a href="#features">Đặc điểm</a>
+      <a href="#product">Sản phẩm</a>
+      <a href="#reviews">Đánh giá</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+  </header>
+
+ 
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Dưỡng Da Căng Mướt Cùng HASOYUN</h1>
+      <p>Bộ sản phẩm chăm sóc da dịu nhẹ, cấp ẩm mát lành và giúp làn da tươi tắn mỗi ngày.</p>
+      <a href="#product" class="btn">Khám Phá Ngay</a>
+    </div>
+    <div class="hero-img">
+      <span class="tag">Bán chạy</span>
+      <img src="../images/mypham01.jpg" alt="Sữa rửa mặt Amino Acid HASOYUN">
+    </div>
+  </section>
+
+  
+  <section id="features" class="section">
+    <h2>Đặc Điểm Nổi Bật</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Feature 1: Làm Sạch Dịu Nhẹ</h3>
+        <p>Loại bỏ bụi bẩn và dầu thừa nhẹ nhàng mà không làm khô căng da.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Feature 2: Cấp Ẩm Mịn Màng</h3>
+        <p>Giữ ẩm tốt giúp da mềm mại, căng bóng suốt cả ngày dài.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Feature 3: Dễ Dùng Hằng Ngày</h3>
+        <p>Kết cấu mỏng nhẹ, thấm nhanh, phù hợp dùng sáng và tối.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="product" class="section">
+    <h2>Sản Phẩm HASOYUN</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="../images/mypham01.jpg" alt="Sữa Rửa Mặt Amino Acid">
+        <h3>HASOYUN Amino Cleanser</h3>
+        <p>Làm sạch dịu nhẹ, tạo bọt mịn cho làn da thoáng mát.</p>
+        <div class="price">185.000đ</div>
+        <button class="btn">Mua ngay</button>
+      </div>
+
+      <div class="product-card">
+        <img src="../images/mypham02.jpg" alt="Kem Dưỡng Cấp Ẩm">
+        <h3>HASOYUN Water Cream</h3>
+        <p>Kem dưỡng cấp nước giúp da mịn màng và tươi tắn hơn.</p>
+        <div class="price">270.000đ</div>
+        <button class="btn">Mua ngay</button>
+      </div>
+
+      <div class="product-card">
+        <img src="../images/mypham03.jpg" alt="Serum Dưỡng Da">
+        <h3>HASOYUN Blue Serum</h3>
+        <p>Tinh chất dưỡng ẩm và làm dịu da, thấm nhanh không bết dính.</p>
+        <div class="price">310.000đ</div>
+        <button class="btn">Mua ngay</button>
+      </div>
+
+      <div class="product-card">
+        <img src="../images/mypham02.jpg" alt="Kem Dưỡng Phục Hồi">
+        <h3>HASOYUN Aqua Cream</h3>
+        <p>Cấp ẩm sâu giúp da mềm mại và rạng rỡ hơn sau mỗi đêm.</p>
+        <div class="price">240.000đ</div>
+        <button class="btn">Mua ngay</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="reviews" class="section">
+    <h2>Đánh Giá Khách Hàng</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p>"Dùng rửa mặt xong da sạch thoáng mà không bị khô căng."</p>
+        <b>Minh Anh</b>
+      </div>
+      <div class="review-card">
+        <p>"Kem dưỡng thấm nhanh, cấp ẩm ổn, dùng đi học rất hợp."</p>
+        <b>Thu Hà</b>
+      </div>
+      <div class="review-card">
+        <p>"Serum dịu nhẹ, màu xanh nhìn mát mắt lắm, sẽ ủng hộ tiếp."</p>
+        <b>Ngọc Mai</b>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="contact" class="section">
+    <h2>Liên Hệ HASOYUN</h2>
+    <div class="contact-box">
+      <form>
+        <label>Họ và tên:</label>
+        <input type="text" placeholder="Nhập họ tên">
+
+        <label>Email hoặc Số điện thoại:</label>
+        <input type="text" placeholder="Nhập thông tin liên hệ">
+
+        <label>Lời nhắn:</label>
+        <textarea rows="4" placeholder="Nhập nội dung cần tư vấn"></textarea>
+
+        <button type="submit" class="btn">Gửi liên hệ</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="bottom-banner">
+    <img src="../images/bannermp.jpg" alt="Banner bộ sản phẩm mỹ phẩm HASOYUN">
+  </div>
+
+  
+  <footer>
+    <p>© 2026 HASOYUN Cosmetics</p>
+  </footer>
+
+</body>
+</html>

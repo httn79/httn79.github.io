@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Image Gallery &amp; Lightbox</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .gallery-box {
+      max-width: 850px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .gallery-box h2 {
+      margin-top: 0;
+      color: dodgerblue;
+      text-align: center;
+    }
+
+    /* Lưới 3 cột x 2 hàng */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid lightblue;
+    }
+
+    .gallery-grid img:hover {
+      border-color: dodgerblue;
+    }
+
+    /* Khung Lightbox phủ màn hình */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      padding-top: 40px;
+      box-sizing: border-box;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 85%;
+      max-height: 75vh;
+      border-radius: 10px;
+      border: 3px solid white;
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    .close-btn {
+      display: inline-block;
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background-color: royalblue;
+    }
+
+    @media screen and (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-box">
+    <h2>Bộ Sưu Tập Ảnh HASOYUN</h2>
+
+    <div class="gallery-grid">
+      <img src="../images/gallery1.webp" alt="Ảnh 1">
+      <img src="../images/gallery2.jpg" alt="Ảnh 2">
+      <img src="../images/gallery3.jpg" alt="Ảnh 3">
+      <img src="../images/gallery4.jpg" alt="Ảnh 4">
+      <img src="../images/gallery5.jpg" alt="Ảnh 5">
+      <img src="../images/gallery6.jpg" alt="Ảnh 6">
+    </div>
+  </div>
+
+  <!-- Khung xem ảnh lớn (Lightbox) -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Ảnh lớn">
+    <button class="close-btn" id="close-btn">X</button>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Khi click vào ảnh nhỏ trong gallery
+      $(".gallery-grid img").click(function () {
+        var duongDanAnh = $(this).attr("src");
+        $("#lightbox-img").attr("src", duongDanAnh);
+        $("#lightbox").fadeIn();
+      });
+
+      // Khi click nút X để đóng Lightbox
+      $("#close-btn").click(function () {
+        $("#lightbox").fadeOut();
+      });
+    });
+  </script>
+
+</body>
+</html>[

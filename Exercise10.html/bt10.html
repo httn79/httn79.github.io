@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Danh Sách Sản Phẩm Tương Tác</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .shop-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .shop-box h2 {
+      margin-top: 0;
+      text-align: center;
+      color: dodgerblue;
+    }
+
+    /* Thanh tìm kiếm, lọc, sắp xếp */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: aliceblue;
+      border-radius: 8px;
+      border: 1px solid lightblue;
+    }
+
+    .control-item {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .control-item label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .control-item input,
+    .control-item select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid skyblue;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* Danh sách sản phẩm */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .product-item {
+      border: 1px solid lightblue;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: white;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .product-item img {
+      width: 85px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 5px;
+      font-size: 17px;
+      color: navy;
+    }
+
+    .product-info p {
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: royalblue;
+      font-weight: bold;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: dodgerblue;
+      font-size: 15px;
+    }
+
+    #khongCoSp {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      color: royalblue;
+    }
+
+    @media screen and (max-width: 650px) {
+      .product-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shop-box">
+    <h2>HASOYUN SHOP - DANH SÁCH SẢN PHẨM</h2>
+
+    <div class="controls">
+      <div class="control-item">
+        <label for="searchInput">Tìm kiếm:</label>
+        <input type="text" id="searchInput" placeholder="Nhập tên mỹ phẩm...">
+      </div>
+
+      <div class="control-item">
+        <label for="categorySelect">Danh mục:</label>
+        <select id="categorySelect">
+          <option value="all">Tất cả danh mục</option>
+          <option value="Làm sạch">Làm sạch</option>
+          <option value="Dưỡng ẩm">Dưỡng ẩm</option>
+          <option value="Serum">Serum</option>
+        </select>
+      </div>
+
+      <div class="control-item">
+        <label for="sortSelect">Sắp xếp:</label>
+        <select id="sortSelect">
+          <option value="default">Mặc định</option>
+          <option value="asc">Giá tăng dần</option>
+          <option value="desc">Giá giảm dần</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="product-list" id="productList">
+      <div class="product-item" data-name="hasoyun amino cleanser" data-category="Làm sạch" data-price="185000">
+        <img src="../images/mypham01.jpg" alt="HASOYUN Amino Cleanser">
+        <div class="product-info">
+          <h3>HASOYUN Amino Cleanser</h3>
+          <p>Danh mục: Làm sạch</p>
+          <div class="product-price">185.000đ</div>
+        </div>
+      </div>
+
+      <div class="product-item" data-name="hasoyun water cream" data-category="Dưỡng ẩm" data-price="270000">
+        <img src="../images/mypham02.jpg" alt="HASOYUN Water Cream">
+        <div class="product-info">
+          <h3>HASOYUN Water Cream</h3>
+          <p>Danh mục: Dưỡng ẩm</p>
+          <div class="product-price">270.000đ</div>
+        </div>
+      </div>
+
+      <div class="product-item" data-name="hasoyun blue serum" data-category="Serum" data-price="310000">
+        <img src="../images/mypham03.jpg" alt="HASOYUN Blue Serum">
+        <div class="product-info">
+          <h3>HASOYUN Blue Serum</h3>
+          <p>Danh mục: Serum</p>
+          <div class="product-price">310.000đ</div>
+        </div>
+      </div>
+
+      <div class="product-item" data-name="hasoyun aqua cream" data-category="Dưỡng ẩm" data-price="240000">
+        <img src="../images/mypham02.jpg" alt="HASOYUN Aqua Cream">
+        <div class="product-info">
+          <h3>HASOYUN Aqua Cream</h3>
+          <p>Danh mục: Dưỡng ẩm</p>
+          <div class="product-price">240.000đ</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="khongCoSp">Không tìm thấy sản phẩm phù hợp!</div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var danhSachGoc = $("#productList .product-item").get();
+
+      function capNhatDanhSach() {
+        var tuKhoa = $("#searchInput").val().toLowerCase().trim();
+        var danhMuc = $("#categorySelect").val();
+        var kieuSapXep = $("#sortSelect").val();
+
+        // Sắp xếp sản phẩm
+        var items = $("#productList .product-item").get();
+        if (kieuSapXep === "default") {
+          items = danhSachGoc.slice();
+        } else {
+          items.sort(function (a, b) {
+            var giaA = parseInt($(a).attr("data-price"), 10);
+            var giaB = parseInt($(b).attr("data-price"), 10);
+            return kieuSapXep === "asc" ? giaA - giaB : giaB - giaA;
+          });
+        }
+        $("#productList").append(items);
+
+        // Tìm kiếm + lọc + ẩn/hiện sản phẩm
+        var soHien = 0;
+        $("#productList .product-item").each(function () {
+          var ten = $(this).attr("data-name");
+          var loai = $(this).attr("data-category");
+
+          var khopTen = ten.indexOf(tuKhoa) !== -1;
+          var khopLoai = (danhMuc === "all" || loai === danhMuc);
+
+          if (khopTen && khopLoai) {
+            $(this).show();
+            soHien++;
+          } else {
+            $(this).hide();
+          }
+        });
+
+        if (soHien === 0) {
+          $("#khongCoSp").show();
+        } else {
+          $("#khongCoSp").hide();
+        }
+      }
+
+      $("#searchInput").on("keyup", capNhatDanhSach);
+      $("#categorySelect, #sortSelect").on("change", capNhatDanhSach);
+    });
+  </script>
+
+</body>
+</html>

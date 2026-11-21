@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Form Đăng Ký jQuery</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .form-box {
+      max-width: 450px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .form-box h2 {
+      margin-top: 0;
+      text-align: center;
+      color: dodgerblue;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid skyblue;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: royalblue;
+    }
+
+    #ketQua {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .loi {
+      color: crimson;
+    }
+
+    .thanh-cong {
+      color: dodgerblue;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Đăng Ký Tài Khoản HASOYUN</h2>
+
+    <form id="formDangKy">
+      <div class="form-group">
+        <label for="hoten">Họ tên</label>
+        <input type="text" id="hoten" placeholder="Nhập họ tên">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="example@gmail.com">
+      </div>
+
+      <div class="form-group">
+        <label for="sdt">Số điện thoại</label>
+        <input type="text" id="sdt" placeholder="Nhập 10 chữ số">
+      </div>
+
+      <div class="form-group">
+        <label for="matkhau">Mật khẩu</label>
+        <input type="password" id="matkhau" placeholder="Ít nhất 8 ký tự">
+      </div>
+
+      <div class="form-group">
+        <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
+        <input type="password" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
+      </div>
+
+      <button type="submit">ĐĂNG KÝ</button>
+      <div id="ketQua"></div>
+    </form>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#formDangKy").submit(function (e) {
+        e.preventDefault();
+
+        var hoten = $.trim($("#hoten").val());
+        var email = $.trim($("#email").val());
+        var sdt = $.trim($("#sdt").val());
+        var matkhau = $("#matkhau").val();
+        var nhaplai = $("#nhaplaimatkhau").val();
+
+        var emailRegex = /^[^\s@]+@gmail\.com$/;
+        var sdtRegex = /^[0-9]{10}$/;
+
+        function baoLoi(loi) {
+          $("#ketQua").removeClass("thanh-cong").addClass("loi").text(loi);
+        }
+
+        if (hoten === "") {
+          baoLoi("Họ tên không được để trống!");
+          return;
+        }
+
+        if (!emailRegex.test(email)) {
+          baoLoi("Email không hợp lệ!");
+          return;
+        }
+
+        if (!sdtRegex.test(sdt)) {
+          baoLoi("Số điện thoại phải gồm 10 chữ số!");
+          return;
+        }
+
+        if (matkhau.length < 8) {
+          baoLoi("Mật khẩu phải có ít nhất 8 ký tự!");
+          return;
+        }
+
+        if (nhaplai !== matkhau) {
+          baoLoi("Nhập lại mật khẩu không khớp!");
+          return;
+        }
+
+        $("#ketQua").removeClass("loi").addClass("thanh-cong").text("Đăng ký thành công!");
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - FAQ Accordion</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .faq-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .faq-box h2 {
+      margin-top: 0;
+      color: dodgerblue;
+    }
+
+    .faq-item {
+      border: 1px solid lightblue;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .question {
+      background-color: dodgerblue;
+      color: white;
+      padding: 12px 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .question:hover {
+      background-color: royalblue;
+    }
+
+    .answer {
+      display: none;
+      padding: 14px 16px;
+      background-color: aliceblue;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faq-box">
+    <h2>Câu hỏi thường gặp (FAQ)</h2>
+
+    <div class="faq-item">
+      <div class="question">+ HTML là gì?</div>
+      <div class="answer">HTML là ngôn ngữ đánh dấu dùng để xây dựng cấu trúc trang Web.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">+ CSS dùng để làm gì?</div>
+      <div class="answer">CSS dùng để trang trí, định dạng màu sắc, phông chữ và bố cục cho trang Web.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">+ jQuery là gì?</div>
+      <div class="answer">jQuery là thư viện JavaScript giúp viết code thao tác giao diện và bắt sự kiện nhanh, gọn hơn.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">+ Responsive Web là gì?</div>
+      <div class="answer">Responsive Web là cách thiết kế giao diện tự thích ứng đẹp mắt trên máy tính, tablet và điện thoại.</div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $(".question").click(function () {
+        var traLoi = $(this).next(".answer");
+
+        // Đóng các câu trả lời khác để chỉ mở 1 câu tại một thời điểm
+        $(".answer").not(traLoi).slideUp();
+        $(".question").not(this).each(function () {
+          $(this).text($(this).text().replace("- ", "+ "));
+        });
+
+        // Mở hoặc đóng câu hiện tại và đổi dấu + / -
+        traLoi.slideToggle();
+        if ($(this).text().indexOf("+ ") === 0) {
+          $(this).text($(this).text().replace("+ ", "- "));
+        } else {
+          $(this).text($(this).text().replace("- ", "+ "));
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

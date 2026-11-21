@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Menu jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    header {
+      background-color: dodgerblue;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    #menuButton {
+      display: none;
+      background-color: white;
+      color: dodgerblue;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    #menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .box {
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px lightblue;
+    }
+
+    .btn {
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    #thongBao {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: lightblue;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+      }
+
+      #menuButton {
+        display: inline-block;
+      }
+
+      #menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid lightblue;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">HASOYUN</div>
+    <button id="menuButton">☰ MENU</button>
+    <nav id="menu">
+      <a href="#home">HOME</a>
+      <a href="#product">PRODUCT</a>
+      <a href="#services">SERVICES</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <div class="box">
+    <h2>Làm quen jQuery Event</h2>
+    <p>Bấm thử các nút dưới đây để xem hiệu ứng:</p>
+
+    <button id="btnHide" class="btn">Ẩn thông báo (hide)</button>
+    <button id="btnShow" class="btn">Hiện thông báo (show)</button>
+    <button id="btnToggle" class="btn">Ẩn / Hiện (toggle)</button>
+
+    <div id="thongBao">Chào mừng bạn đến với HASOYUN!</div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+    
+      $("#menuButton").click(function () {
+        $("#menu").slideToggle();
+      });
+
+    
+      $("#btnHide").click(function () {
+        $("#thongBao").hide();
+      });
+
+    
+      $("#btnShow").click(function () {
+        $("#thongBao").show();
+      });
+
+ 
+      $("#btnToggle").click(function () {
+        $("#thongBao").toggle();
+      });
+    });
+  </script>
+
+</body>
+</html>

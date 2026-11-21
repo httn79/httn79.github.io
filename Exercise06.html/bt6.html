@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Tabs jQuery</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .box {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    /* Thanh nút tab */
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tab {
+      background-color: lightblue;
+      color: navy;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Tab đang được chọn */
+    .tab.active {
+      background-color: dodgerblue;
+      color: white;
+    }
+
+    /* Khung nội dung */
+    .tab-content {
+      border: 1px solid lightblue;
+      border-radius: 8px;
+      padding: 18px;
+      background-color: aliceblue;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>HASOYUN Amino Cleanser</h2>
+
+    <!-- 3 nút tab -->
+    <div class="tab-buttons">
+      <button class="tab active" data-target="#tab-thongtin">Thông tin</button>
+      <button class="tab" data-target="#tab-thongso">Thông số</button>
+      <button class="tab" data-target="#tab-danhgia">Đánh giá</button>
+    </div>
+
+    <!-- Nội dung tương ứng -->
+    <div class="tab-content">
+      <div id="tab-thongtin" class="tab-panel active">
+        <h3>Thông tin sản phẩm</h3>
+        <p>Sữa rửa mặt dịu nhẹ giúp làm sạch bụi bẩn và dầu thừa mà vẫn giữ độ ẩm tự nhiên cho da.</p>
+      </div>
+
+      <div id="tab-thongso" class="tab-panel">
+        <h3>Thông số sản phẩm</h3>
+        <p><b>Dung tích:</b> 120ml</p>
+        <p><b>Loại da phù hợp:</b> Mọi loại da, đặc biệt da thiếu ẩm</p>
+        <p><b>Xuất xứ:</b> Việt Nam</p>
+      </div>
+
+      <div id="tab-danhgia" class="tab-panel">
+        <h3>Đánh giá khách hàng</h3>
+        <p><b>Minh Anh:</b> "Rửa xong da mềm, không bị khô căng."</p>
+        <p><b>Thu Hà:</b> "Bọt mịn, mùi nhẹ, dùng đi học rất thích."</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $(".tab").click(function () {
+        var target = $(this).attr("data-target");
+
+        // Đổi màu nút tab đang chọn
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+
+        // Ẩn hết nội dung rồi hiện đúng tab được chọn
+        $(".tab-panel").hide().removeClass("active");
+        $(target).show().addClass("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

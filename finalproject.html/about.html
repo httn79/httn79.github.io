@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới Thiệu - SONIA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 35%, #f8fafc 100%);
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #062247, #0369a1, #0284c7);
+      padding: 16px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(6, 34, 71, 0.25);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .logo span { color: #7dd3fc; }
+    nav { display: flex; gap: 12px; flex-wrap: wrap; }
+    nav a {
+      color: #e0f2fe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+    nav a:hover, nav a.active {
+      background: #ffffff;
+      color: #062247;
+    }
+
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .about-card {
+      background: #ffffff;
+      border: 1.5px solid #7dd3fc;
+      border-radius: 14px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 10px 24px rgba(2, 132, 199, 0.09);
+    }
+    .about-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: 12px;
+    }
+    .tag {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0284c7;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    h2 { font-size: 30px; color: #062247; margin-bottom: 12px; }
+    p { margin-bottom: 14px; color: #1e293b; }
+    .btn-blue {
+      display: inline-block;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+    .btn-blue:hover { background: #062247; transform: translateY(-2px); }
+
+    footer {
+      background: linear-gradient(135deg, #041730, #062247);
+      color: #bae6fd;
+      text-align: center;
+      padding: 24px;
+      margin-top: 60px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 780px) {
+      .about-card { grid-template-columns: 1fr; }
+      header { padding: 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">SONIA<span>.</span></a>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="products.html">Sản phẩm</a>
+      <a href="about.html" class="active">Giới thiệu</a>
+      <a href="contact.html">Liên hệ &amp; Góp ý</a>
+      <a href="account.html">Tài khoản</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="about-card">
+      <img src="../images/banner.jpg" alt="Sunghoon SONIA"/>
+      <div>
+        <span class="tag">NHÃN HÀNG SONIA</span>
+        <h2>Sắc Xanh Thời Trang Hiện Đại</h2>
+        <p><strong>SONIA</strong> là thương hiệu thời trang chuyên về quần áo, giày dép và phụ kiện lấy cảm hứng từ gam màu xanh dương thanh lịch và xanh da trời trẻ trung.</p>
+        <p>Chúng tôi mang đến những thiết kế gọn gàng, dễ phối đồ, phù hợp cho cả đi học, đi làm và dạo phố hằng ngày.</p>
+        <a href="products.html" class="btn-blue">Xem Sản Phẩm</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 SONIA Fashion — Quần áo, Giày dép &amp; Phụ kiện</footer>
+</body>
+</html>

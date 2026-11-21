@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SONIA - Trang Chủ</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 35%, #f8fafc 100%);
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #062247, #0369a1, #0284c7);
+      padding: 16px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(6, 34, 71, 0.25);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .logo span { color: #7dd3fc; }
+    nav { display: flex; gap: 14px; flex-wrap: wrap; }
+    nav a {
+      color: #e0f2fe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+    nav a:hover, nav a.active {
+      background: #ffffff;
+      color: #062247;
+    }
+
+    .hero-sunghoon {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
+      background: linear-gradient(120deg, #062247, #0284c7, #38bdf8);
+    }
+    .hero-sunghoon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+    .hero-glass {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(6, 34, 71, 0.86) 0%, rgba(3, 105, 161, 0.5) 55%, rgba(56, 189, 248, 0.12) 100%);
+      display: flex;
+      align-items: center;
+      padding: 0 7%;
+    }
+    .hero-box { max-width: 560px; color: #ffffff; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.25);
+      border: 1px solid #7dd3fc;
+      color: #e0f2fe;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .hero-box h1 {
+      font-size: 46px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .hero-box p {
+      color: #e0f2fe;
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+    .btn-blue {
+      display: inline-block;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+      transition: 0.25s;
+    }
+    .btn-blue:hover {
+      background: #ffffff;
+      color: #062247;
+      transform: translateY(-2px);
+    }
+
+    .container { max-width: 1180px; margin: 48px auto; padding: 0 20px; }
+    .section-head { text-align: center; margin-bottom: 30px; }
+    .section-head h2 { font-size: 30px; color: #062247; margin-bottom: 4px; }
+    .section-head p { color: #0284c7; font-weight: 600; font-size: 14px; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 1.5px solid #bae6fd;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.09);
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: #0284c7;
+    }
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      background: #e0f2fe;
+    }
+    .product-meta { padding: 14px; background: #f0f9ff; }
+    .product-cat { font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; }
+    .product-title { font-size: 15px; font-weight: 700; color: #062247; margin: 4px 0; }
+    .product-price { font-size: 14px; font-weight: 700; color: #0369a1; }
+
+    footer {
+      background: linear-gradient(135deg, #041730, #062247);
+      color: #bae6fd;
+      text-align: center;
+      padding: 24px;
+      margin-top: 60px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-box h1 { font-size: 34px; }
+    }
+    @media (max-width: 540px) {
+      .products-grid { grid-template-columns: 1fr; }
+      header { padding: 14px 18px; }
+      .hero-sunghoon { height: 420px; }
+      .hero-box h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">SONIA<span>.</span></a>
+    <nav>
+      <a href="index.html" class="active">Trang chủ</a>
+      <a href="products.html">Sản phẩm</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="contact.html">Liên hệ &amp; Tài khoản</a>
+    </nav>
+  </header>
+
+  <section class="hero-sunghoon">
+    <img src="../images/banner.jpg" alt="Sunghoon SONIA"/>
+    <div class="hero-glass">
+      <div class="hero-box">
+        <span class="hero-tag">SONIA • BLUE SIGNATURE</span>
+        <h1>SUNGHOON x SONIA</h1>
+        <p>Thời trang quần áo, giày dép và phụ kiện mang sắc xanh dương &amp; xanh da trời hiện đại, nổi bật.</p>
+        <a href="products.html" class="btn-blue">Khám Phá Ngay</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-head">
+      <h2>Sản Phẩm SONIA Nổi Bật</h2>
+      <p>Bộ sưu tập sắc xanh cuốn hút</p>
+    </div>
+    <div class="products-grid" id="homeProducts"></div>
+  </section>
+
+  <footer>© 2026 SONIA Fashion — Quần áo, Giày dép &amp; Phụ kiện</footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

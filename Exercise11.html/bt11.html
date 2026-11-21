@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASOYUN - Shopping Cart jQuery</title>
+  <!-- Nhúng thư viện jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 25px 15px;
+      background-color: aliceblue;
+      color: navy;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: dodgerblue;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .cart-count-box {
+      background-color: white;
+      color: dodgerblue;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px lightblue;
+    }
+
+    .box h2 {
+      margin-top: 0;
+      color: dodgerblue;
+    }
+
+    .product-card {
+      border: 1px solid lightblue;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .product-card img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-info h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: dodgerblue;
+      margin-bottom: 8px;
+    }
+
+    .qty-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .btn-small {
+      background-color: lightblue;
+      color: navy;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-small:hover {
+      background-color: skyblue;
+    }
+
+    .btn-add {
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-add:hover {
+      background-color: royalblue;
+    }
+
+    /* Giỏ hàng */
+    .cart-item {
+      border-bottom: 1px dashed skyblue;
+      padding: 10px 0;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    .cart-item-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .btn-remove {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .total-box {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 2px solid dodgerblue;
+      font-size: 18px;
+      font-weight: bold;
+      color: dodgerblue;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media screen and (max-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo">HASOYUN SHOP</div>
+      <div class="cart-count-box">Giỏ hàng: <span id="cartCount">0</span> sp</div>
+    </header>
+
+    <div class="main-grid">
+      <!-- Danh sách sản phẩm -->
+      <div class="box">
+        <h2>Danh sách sản phẩm</h2>
+
+        <div class="product-card" data-id="sp1" data-name="HASOYUN Amino Cleanser" data-price="185000">
+          <img src="../images/mypham01.jpg" alt="HASOYUN Amino Cleanser">
+          <div class="product-info">
+            <h3>HASOYUN Amino Cleanser</h3>
+            <div class="price">185.000đ</div>
+            <div class="qty-box">
+              <button type="button" class="btn-small btn-minus">-</button>
+              <span class="chon-sl">1</span>
+              <button type="button" class="btn-small btn-plus">+</button>
+            </div>
+            <button type="button" class="btn-add">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-id="sp2" data-name="HASOYUN Water Cream" data-price="270000">
+          <img src="../images/mypham02.jpg" alt="HASOYUN Water Cream">
+          <div class="product-info">
+            <h3>HASOYUN Water Cream</h3>
+            <div class="price">270.000đ</div>
+            <div class="qty-box">
+              <button type="button" class="btn-small btn-minus">-</button>
+              <span class="chon-sl">1</span>
+              <button type="button" class="btn-small btn-plus">+</button>
+            </div>
+            <button type="button" class="btn-add">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card" data-id="sp3" data-name="HASOYUN Blue Serum" data-price="310000">
+          <img src="../images/mypham03.jpg" alt="HASOYUN Blue Serum">
+          <div class="product-info">
+            <h3>HASOYUN Blue Serum</h3>
+            <div class="price">310.000đ</div>
+            <div class="qty-box">
+              <button type="button" class="btn-small btn-minus">-</button>
+              <span class="chon-sl">1</span>
+              <button type="button" class="btn-small btn-plus">+</button>
+            </div>
+            <button type="button" class="btn-add">Thêm vào giỏ</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giỏ hàng -->
+      <div class="box">
+        <h2>GIỎ HÀNG</h2>
+        <div id="cartItems"></div>
+        <div class="total-box">
+          <span>Tổng:</span>
+          <span id="cartTotal">0đ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var cart = JSON.parse(localStorage.getItem("hasoyunCart")) || [];
+
+      function formatTien(so) {
+        return so.toLocaleString("vi-VN") + "đ";
+      }
+
+      function luuVaHienThi() {
+        localStorage.setItem("hasoyunCart", JSON.stringify(cart));
+
+        var html = "";
+        var tongTien = 0;
+        var tongSoLuong = 0;
+
+        if (cart.length === 0) {
+          html = "<p>Giỏ hàng đang trống.</p>";
+        } else {
+          for (var i = 0; i < cart.length; i++) {
+            var item = cart[i];
+            var thanhTien = item.price * item.qty;
+            tongTien += thanhTien;
+            tongSoLuong += item.qty;
+
+            html += '<div class="cart-item">';
+            html += '<div class="cart-item-top"><span>' + item.name + '</span><span>' + formatTien(thanhTien) + '</span></div>';
+            html += '<div class="cart-item-bottom">';
+            html += '<span>SL: ';
+            html += '<button type="button" class="btn-small cart-dec" data-index="' + i + '">-</button> ';
+            html += '<b>' + item.qty + '</b> ';
+            html += '<button type="button" class="btn-small cart-inc" data-index="' + i + '">+</button>';
+            html += '</span>';
+            html += '<button type="button" class="btn-remove" data-index="' + i + '">Xóa</button>';
+            html += '</div></div>';
+          }
+        }
+
+        $("#cartItems").html(html);
+        $("#cartTotal").text(formatTien(tongTien));
+        $("#cartCount").text(tongSoLuong);
+      }
+
+      // Tăng / giảm số lượng ở thẻ sản phẩm trước khi thêm
+      $(".btn-plus").click(function () {
+        var span = $(this).siblings(".chon-sl");
+        var sl = parseInt(span.text(), 10) + 1;
+        span.text(sl);
+      });
+
+      $(".btn-minus").click(function () {
+        var span = $(this).siblings(".chon-sl");
+        var sl = parseInt(span.text(), 10) - 1;
+        if (sl < 1) sl = 1;
+        span.text(sl);
+      });
+
+      // Thêm vào giỏ hàng
+      $(".btn-add").click(function () {
+        var card = $(this).closest(".product-card");
+        var id = card.attr("data-id");
+        var name = card.attr("data-name");
+        var price = parseInt(card.attr("data-price"), 10);
+        var qty = parseInt(card.find(".chon-sl").text(), 10);
+
+        var viTri = -1;
+        for (var i = 0; i < cart.length; i++) {
+          if (cart[i].id === id) {
+            viTri = i;
+            break;
+          }
+        }
+
+        if (viTri !== -1) {
+          cart[viTri].qty += qty;
+        } else {
+          cart.push({ id: id, name: name, price: price, qty: qty });
+        }
+
+        card.find(".chon-sl").text("1");
+        luuVaHienThi();
+      });
+
+      // Tăng số lượng trong giỏ
+      $("#cartItems").on("click", ".cart-inc", function () {
+        var index = $(this).attr("data-index");
+        cart[index].qty += 1;
+        luuVaHienThi();
+      });
+
+      // Giảm số lượng trong giỏ
+      $("#cartItems").on("click", ".cart-dec", function () {
+        var index = $(this).attr("data-index");
+        if (cart[index].qty > 1) {
+          cart[index].qty -= 1;
+        } else {
+          cart.splice(index, 1);
+        }
+        luuVaHienThi();
+      });
+
+      // Xóa sản phẩm khỏi giỏ
+      $("#cartItems").on("click", ".btn-remove", function () {
+        var index = $(this).attr("data-index");
+        cart.splice(index, 1);
+        luuVaHienThi();
+      });
+
+      // Hiển thị giỏ hàng đã lưu khi tải lại trang
+      luuVaHienThi();
+    });
+  </script>
+
+</body>
+</html>
