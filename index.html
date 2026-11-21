@@ -4,108 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài tập của Hà Thị Tố Như</title>
+    <title>Hà Thị Tố Như - Bài tập cá nhân</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
             margin: 0;
-            padding: 0;
+            background: #f0f4f8;
+            color: #333;
         }
 
         header {
-            background-color: #17365d;
+            background: #17365d;
             color: white;
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
         }
 
         header h1 {
-            margin: 0;
+            margin: 0 0 15px;
         }
 
         .container {
-            width: 80%;
             max-width: 900px;
             margin: 30px auto;
-            background-color: white;
             padding: 25px;
-            border-radius: 10px;
+            background: white;
+            border-radius: 12px;
         }
 
         h2 {
             color: #17365d;
             border-bottom: 2px solid #17365d;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
 
-        ul {
-            list-style: none;
+        .exercise-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             padding: 0;
+            list-style: none;
         }
 
-        li {
-            margin: 12px 0;
-        }
-
-        a {
+        .exercise-list a,
+        .project-link {
             display: block;
-            text-decoration: none;
-            background-color: #eaf1f8;
+            padding: 18px;
+            background: #eaf1f8;
             color: #17365d;
-            padding: 14px;
-            border-radius: 6px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        a:hover {
-            background-color: #17365d;
+        .exercise-list a:hover,
+        .project-link:hover {
+            background: #17365d;
             color: white;
+            transform: translateY(-3px);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .exercise-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>TRANG BÀI TẬP CÁ NHÂN</h1>
-        <p>Họ và tên: Hà Thị Tố Như</p>
-        <p>Lớp: CNTT.B</p>
-    </header>
+<header>
+    <h1>TRANG BÀI TẬP CÁ NHÂN</h1>
+    <p>Họ và tên: Hà Thị Tố Như</p>
+    <p>Lớp: CNTT.B</p>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <h2>Danh sách bài tập</h2>
+    <h2>DANH SÁCH BÀI TẬP</h2>
 
-        <ul>
-            <li><a href="Exercise01.html/bai1.html">Exercise 01</a></li>
-            <li><a href="Exercise02.html/bai2.html">Exercise 02</a></li>
-            <li><a href="Exercise03.html/bai3.html">Exercise 03</a></li>
-            <li><a href="Exercise04.html/bai4.html">Exercise 04</a></li>
-            <li><a href="Exercise05.html/bai5.html">Exercise 05</a></li>
-            <li><a href="Exercise06.html/bai6.html">Exercise 06</a></li>
-            <li><a href="Exercise07.html/bai7.html">Exercise 07</a></li>
-            <li><a href="Exercise08.html/bai8.html">Exercise 08</a></li>
-            <li><a href="Exercise09.html/bai9.html">Exercise 09</a></li>
-            <li><a href="Exercise10.html/bai10.html">Exercise 10</a></li>
-            <li><a href="Exercise11.html/bai11.html">Exercise 11</a></li>
-            <li><a href="Exercise12.html/bai12.html">Exercise 12</a></li>
-            <li><a href="finalproject.html">Final Project</a></li>
-        </ul>
+    <ul class="exercise-list">
+        <li><a href="Exercise01/profile.html">Exercise 01</a></li>
+        <li><a href="Exercise02/cv.html">Exercise 02</a></li>
+        <li><a href="Exercise03/landingpage.html">Exercise 03</a></li>
+        <li><a href="Exercise04/nangcapbai3.html">Exercise 04</a></li>
+        <li><a href="Exercise05/bai5.html">Exercise 05</a></li>
+        <li><a href="Exercise06/bt6.html">Exercise 06</a></li>
+        <li><a href="Exercise07/bt7.html">Exercise 07</a></li>
+        <li><a href="Exercise08/bt8.html">Exercise 08</a></li>
+        <li><a href="Exercise09/bt9.html">Exercise 09</a></li>
+        <li><a href="Exercise10/bt10.html">Exercise 10</a></li>
+        <li><a href="Exercise11/bt11.html">Exercise 11</a></li>
+        <li><a href="Exercise12/bt12.html">Exercise 12</a></li>
+    </ul>
 
-    </div>
+    <h2>FINAL PROJECT</h2>
 
-    <footer>
-        © 2026 - Hà Thị Tố Như | CNTT.B
-    </footer>
+    <a class="project-link" href="finalproject/index.html">
+        XEM FINAL PROJECT
+    </a>
+
+</div>
+
+<footer>
+    © 2026 - Hà Thị Tố Như | CNTT.B
+</footer>
 
 </body>
 </html>
-
